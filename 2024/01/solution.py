@@ -9,7 +9,7 @@ def get_file_lines(input_file):
     with open(input_file, "r") as f:
         lines = []
         for line in f:
-            lines.append([char for char in line.strip().split(" ") if char])
+            lines.append([char for char in line.strip().split()])
     return lines
 
 
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     first_list = [int(line[0]) for line in lines]
     second_list = [int(line[1]) for line in lines]
     print(get_similarity_score(first_list, second_list))
-    # first_list.sort()
-    # second_list.sort()
-    # get_sum_distances(first_list, second_list)
-    # print(get_sum_distances(first_list, second_list))
+    first_list.sort()
+    second_list.sort()
+    get_sum_distances(first_list, second_list)
+    print(get_sum_distances(first_list, second_list))
