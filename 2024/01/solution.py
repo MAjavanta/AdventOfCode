@@ -1,16 +1,9 @@
 from dotenv import load_dotenv
 import os
+import utils
 
 
 load_dotenv()
-
-
-def get_file_lines(input_file):
-    with open(input_file, "r") as f:
-        lines = []
-        for line in f:
-            lines.append([char for char in line.strip().split()])
-    return lines
 
 
 def get_env():
@@ -35,9 +28,8 @@ def get_similarity_score(first_list, second_list):
 
 if __name__ == "__main__":
     input_file = get_env()
-    lines = get_file_lines(input_file)
-    first_list = [int(line[0]) for line in lines]
-    second_list = [int(line[1]) for line in lines]
+    first_list = [int(line[0]) for line in utils.get_lines(input_file)]
+    second_list = [int(line[1]) for line in utils.get_lines(input_file)]
     print(get_similarity_score(first_list, second_list))
     first_list.sort()
     second_list.sort()
