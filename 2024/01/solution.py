@@ -1,17 +1,4 @@
-from dotenv import load_dotenv
-import os
 import utils
-
-
-load_dotenv()
-
-
-def get_env():
-    if os.getenv("DEMO") == "1":
-        input_file = "2024\\01\\demo-input.txt"
-    else:
-        input_file = "2024\\01\\input.txt"
-    return input_file
 
 
 def get_sum_distances(first_list, second_list):
@@ -27,7 +14,7 @@ def get_similarity_score(first_list, second_list):
 
 
 if __name__ == "__main__":
-    input_file = get_env()
+    input_file = utils.get_input_file_by_env("01")
     first_list = [int(line[0]) for line in utils.get_lines(input_file)]
     second_list = [int(line[1]) for line in utils.get_lines(input_file)]
     print(get_similarity_score(first_list, second_list))

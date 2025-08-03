@@ -1,17 +1,5 @@
 from dotenv import load_dotenv
 import utils
-import os
-
-
-load_dotenv()
-
-
-def get_env():
-    if os.getenv("DEMO") == "1":
-        input_file = "2024\\02\\demo-input.txt"
-    else:
-        input_file = "2024\\02\\input.txt"
-    return input_file
 
 
 def is_report_safe(line):
@@ -25,7 +13,14 @@ def is_report_safe(line):
 
 if __name__ == "__main__":
     report_safety_lst = []
-    input_file = get_env()
+    input_file = utils.get_input_file_by_env("02")
     for line in utils.get_lines(input_file):
-        report_safety_lst.append(is_report_safe(line))
+        if is_report_safe(line):
+            report_safety_lst.append(True)
+        else:
+            for i in range(len(line)):
+                reduced_line = line[:i] + line[i + 1 :]
+                if is_report_safe(reduced_line):
+                    report_safety_lst.append(True)
+                    break
     print(report_safety_lst.count(True))
