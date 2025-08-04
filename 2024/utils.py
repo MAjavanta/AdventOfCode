@@ -5,7 +5,7 @@ import os
 load_dotenv()
 
 
-def get_lines(input_file):
+def get_clean_lines(input_file):
     with open(input_file, "r") as f:
         for line in f:
             lst = line.strip().split()

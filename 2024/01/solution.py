@@ -15,8 +15,8 @@ def get_similarity_score(first_list, second_list):
 
 if __name__ == "__main__":
     input_file = utils.get_input_file_by_env("01")
-    first_list = [int(line[0]) for line in utils.get_lines(input_file)]
-    second_list = [int(line[1]) for line in utils.get_lines(input_file)]
+    first_list = [int(line[0]) for line in utils.get_clean_lines(input_file)]
+    second_list = [int(line[1]) for line in utils.get_clean_lines(input_file)]
     print(get_similarity_score(first_list, second_list))
     first_list.sort()
     second_list.sort()

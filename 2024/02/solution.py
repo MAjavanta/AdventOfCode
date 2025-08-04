@@ -14,7 +14,7 @@ def is_report_safe(line):
 if __name__ == "__main__":
     report_safety_lst = []
     input_file = utils.get_input_file_by_env("02")
-    for line in utils.get_lines(input_file):
+    for line in utils.get_clean_lines(input_file):
         if is_report_safe(line):
             report_safety_lst.append(True)
         else:
